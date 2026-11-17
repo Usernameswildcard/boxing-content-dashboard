@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- Sorgt dafür, dass die Seite auf dem Handy in richtiger Größe angezeigt wird -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content-Dashboard – Boxen · Modeln · Lifestyle</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Kopfzeile -->
+  <header class="kopf">
+    <h1>Content-Dashboard</h1>
+    <p class="untertitel">Boxen · Modeln · Lifestyle</p>
+  </header>
+
+  <main class="inhalt">
+
+    <!-- 1) Übersicht: Zahlen auf einen Blick -->
+    <section aria-labelledby="titel-uebersicht">
+      <h2 id="titel-uebersicht">Übersicht</h2>
+
+      <div class="fortschritt">
+        <div class="fortschritt-text">
+          <span>Fortschritt</span>
+          <strong id="fortschritt-prozent">0 % fertig</strong>
+        </div>
+        <div class="fortschritt-balken">
+          <div id="fortschritt-fuellung" class="fortschritt-fuellung"></div>
+        </div>
+      </div>
+
+      <!-- Die Kacheln werden von JavaScript (js/app.js) befüllt -->
+      <div id="kacheln" class="kacheln"></div>
+    </section>
+
+    <!-- 2) Filter -->
+    <section aria-labelledby="titel-filter">
+      <h2 id="titel-filter">Filter</h2>
+
+      <div class="filter-gruppe" id="filter-bereich" role="group" aria-label="Nach Bereich filtern">
+        <button type="button" class="filter-knopf aktiv" data-wert="Alle">Alle</button>
+        <button type="button" class="filter-knopf" data-wert="Boxen">Boxen</button>
+        <button type="button" class="filter-knopf" data-wert="Modeln">Modeln</button>
+        <button type="button" class="filter-knopf" data-wert="Lifestyle">Lifestyle</button>
+      </div>
+
+      <label class="feld">
+        <span>Status</span>
+        <select id="filter-status">
+          <option value="Alle">Alle Status</option>
+          <option value="Idee">Idee</option>
+          <option value="In Bearbeitung">In Bearbeitung</option>
+          <option value="Fertig">Fertig</option>
+        </select>
+      </label>
+    </section>
+
+    <!-- 3) Liste der Content-Ideen -->
+    <section aria-labelledby="titel-ideen">
+      <h2 id="titel-ideen">Content-Ideen <span id="anzahl-sichtbar" class="anzahl"></span></h2>
+      <div id="ideen-liste" class="ideen-liste"></div>
+      <p id="leer-hinweis" class="leer-hinweis" hidden>Keine Ideen für diesen Filter gefunden.</p>
+    </section>
+
+    <!-- 4) Formular: neue Idee hinzufügen -->
+    <section aria-labelledby="titel-neu">
+      <h2 id="titel-neu">Neue Idee</h2>
+
+      <form id="formular" class="formular" novalidate>
+        <label class="feld">
+          <span>Titel *</span>
+          <input type="text" id="eingabe-titel" placeholder="z. B. Trainingsroutine am Sandsack" maxlength="80">
+        </label>
+        <p id="fehler-titel" class="fehler" hidden>Bitte gib einen Titel ein.</p>
+
+        <div class="feld-reihe">
+          <label class="feld">
+            <span>Bereich</span>
+            <select id="eingabe-bereich">
+              <option>Boxen</option>
+              <option>Modeln</option>
+              <option>Lifestyle</option>
+            </select>
+          </label>
+
+          <label class="feld">
+            <span>Plattform</span>
+            <select id="eingabe-plattform">
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>YouTube</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="feld">
+          <span>Notiz</span>
+          <textarea id="eingabe-notiz" rows="3" placeholder="Worum geht es? Was brauchst du dafür?" maxlength="300"></textarea>
+        </label>
+
+        <button type="submit" class="knopf knopf-haupt">Idee hinzufügen</button>
+      </form>
+    </section>
+
+    <!-- 5) Zurücksetzen -->
+    <section class="zuruecksetzen">
+      <button type="button" id="knopf-zuruecksetzen" class="knopf knopf-leise">
+        Beispieldaten zurücksetzen
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="fuss">
+    <p>Deine Daten werden nur in diesem Browser gespeichert.</p>
+  </footer>
+
+  <!-- Reihenfolge ist wichtig: zuerst die Daten, dann die Logik -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
