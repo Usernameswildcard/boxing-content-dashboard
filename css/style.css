@@ -1,0 +1,393 @@
+/* ============================================================
+   Gestaltung – "Mobile First"
+   Zuerst wird alles für kleine Bildschirme (Handy) gestaltet.
+   Weiter unten passen Media Queries das Layout für größere
+   Bildschirme an.
+   ============================================================ */
+
+/* ---------- Farben & Grundwerte (Variablen) ---------- */
+:root {
+  --hintergrund: #f4f4f6;
+  --flaeche: #ffffff;
+  --text: #1c1c22;
+  --text-leise: #5e5e6a;
+  --rand: #e2e2e8;
+  --dunkel: #16161c;
+
+  /* Eine Akzentfarbe pro Bereich */
+  --boxen: #d62839;
+  --modeln: #7b3fd1;
+  --lifestyle: #1e9e63;
+
+  /* Farben für den Status */
+  --idee: #6b7280;
+  --bearbeitung: #d98a00;
+  --fertig: #1e9e63;
+
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--hintergrund);
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+/* ---------- Kopf & Fuß ---------- */
+.kopf {
+  background: var(--dunkel);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  border-bottom: 4px solid var(--boxen);
+}
+
+.kopf h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.untertitel {
+  margin: 0.25rem 0 0;
+  color: #b9b9c6;
+}
+
+.inhalt {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+
+.fuss {
+  text-align: center;
+  color: var(--text-leise);
+  font-size: 0.85rem;
+  padding: 1rem;
+}
+
+/* ---------- Fortschritt ---------- */
+.fortschritt {
+  background: var(--flaeche);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--rand);
+}
+
+.fortschritt-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.fortschritt-balken {
+  height: 10px;
+  background: var(--rand);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fortschritt-fuellung {
+  height: 100%;
+  width: 0;
+  background: var(--fertig);
+  transition: width 0.3s ease;
+}
+
+/* ---------- Kacheln ---------- */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Handy: 2 Spalten */
+  gap: 0.6rem;
+}
+
+.kachel {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-left: 5px solid var(--dunkel);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.kachel-zahl {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.kachel-name {
+  color: var(--text-leise);
+  font-size: 0.9rem;
+}
+
+.kachel.gesamt {
+  grid-column: 1 / -1; /* "Gesamt" geht über die ganze Breite */
+}
+
+.kachel.status-idee            { border-left-color: var(--idee); }
+.kachel.status-in-bearbeitung  { border-left-color: var(--bearbeitung); }
+.kachel.status-fertig          { border-left-color: var(--fertig); }
+.kachel.bereich-boxen          { border-left-color: var(--boxen); }
+.kachel.bereich-modeln         { border-left-color: var(--modeln); }
+.kachel.bereich-lifestyle      { border-left-color: var(--lifestyle); }
+
+/* ---------- Filter ---------- */
+.filter-gruppe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.filter-knopf {
+  min-height: 44px; /* große Touch-Fläche */
+  padding: 0 1rem;
+  border: 1px solid var(--rand);
+  border-radius: 999px;
+  background: var(--flaeche);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-knopf.aktiv {
+  background: var(--dunkel);
+  border-color: var(--dunkel);
+  color: #fff;
+}
+
+/* ---------- Formularfelder ---------- */
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.feld span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  background: var(--flaeche);
+  color: var(--text);
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 3px solid #9ec5ff;
+  outline-offset: 1px;
+}
+
+.feld-reihe {
+  display: flex;
+  flex-direction: column; /* Handy: untereinander */
+}
+
+.formular {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.fehler {
+  color: var(--boxen);
+  margin: -0.5rem 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.knopf-haupt {
+  width: 100%;
+  background: var(--boxen);
+  color: #fff;
+}
+
+.knopf-leise {
+  background: transparent;
+  border-color: var(--rand);
+  color: var(--text-leise);
+}
+
+.knopf-loeschen {
+  background: transparent;
+  border-color: var(--rand);
+  color: var(--boxen);
+  font-weight: 500;
+}
+
+.zuruecksetzen {
+  text-align: center;
+}
+
+/* ---------- Ideen-Karten ---------- */
+.ideen-liste {
+  display: grid;
+  grid-template-columns: 1fr; /* Handy: 1 Spalte */
+  gap: 0.75rem;
+}
+
+.anzahl {
+  color: var(--text-leise);
+  font-weight: 400;
+}
+
+.karte {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-top: 5px solid var(--dunkel);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.karte.bereich-boxen     { border-top-color: var(--boxen); }
+.karte.bereich-modeln    { border-top-color: var(--modeln); }
+.karte.bereich-lifestyle { border-top-color: var(--lifestyle); }
+
+.karte-kopf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bereich-etikett {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bereich-boxen .bereich-etikett     { color: var(--boxen); }
+.bereich-modeln .bereich-etikett    { color: var(--modeln); }
+.bereich-lifestyle .bereich-etikett { color: var(--lifestyle); }
+
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.status-badge.status-idee           { background: var(--idee); }
+.status-badge.status-in-bearbeitung { background: var(--bearbeitung); }
+.status-badge.status-fertig         { background: var(--fertig); }
+
+.karte-titel {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.karte-notiz {
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.karte-meta {
+  margin: 0 0 0.75rem;
+  color: var(--text-leise);
+  font-size: 0.85rem;
+}
+
+.karte-fuss {
+  margin-top: auto; /* schiebt den Fuß nach unten */
+  display: flex;
+  gap: 0.5rem;
+}
+
+.karte-fuss select {
+  flex: 1;
+}
+
+.leer-hinweis {
+  color: var(--text-leise);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ============================================================
+   Größere Bildschirme
+   ============================================================ */
+
+/* Ab Tablet-Breite (600px) */
+@media (min-width: 600px) {
+  .kacheln {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .kachel.gesamt {
+    grid-column: auto;
+  }
+
+  .ideen-liste {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feld-reihe {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .knopf-haupt {
+    width: auto;
+  }
+}
+
+/* Ab Desktop-Breite (900px) */
+@media (min-width: 900px) {
+  .kacheln {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .ideen-liste {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
