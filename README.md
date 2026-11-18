@@ -8,6 +8,7 @@ Eine einfache, mobilfreundliche Web-App, um Content-Ideen für meine Karriere al
 - **Drei Bereiche:** Boxen, Modeln und Lifestyle, jeweils mit eigener Farbe
 - **Status:** Idee → In Bearbeitung → Fertig, direkt auf jeder Karte änderbar
 - **Filter:** nach Bereich und nach Status
+- **Suche:** Ideen nach Titel durchsuchen (Groß-/Kleinschreibung egal), kombinierbar mit den Filtern
 - **Neue Ideen** hinzufügen und Ideen löschen
 - **Speichern im Browser** (`localStorage`): keine Anmeldung, kein Server, keine Kosten
 - **Zurücksetzen** auf die Beispieldaten

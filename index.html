@@ -60,8 +60,16 @@
     <!-- 3) Liste der Content-Ideen -->
     <section aria-labelledby="titel-ideen">
       <h2 id="titel-ideen">Content-Ideen <span id="anzahl-sichtbar" class="anzahl"></span></h2>
+
+      <!-- Suchfeld: filtert die Ideen nach Titel, während man tippt -->
+      <label class="feld suche">
+        <span>Suche</span>
+        <input type="search" id="suche" placeholder="Titel durchsuchen, z. B. Sparring" autocomplete="off">
+      </label>
+
       <div id="ideen-liste" class="ideen-liste"></div>
-      <p id="leer-hinweis" class="leer-hinweis" hidden>Keine Ideen für diesen Filter gefunden.</p>
+      <!-- aria-live: Screenreader lesen die Meldung vor, sobald sie erscheint -->
+      <p id="leer-hinweis" class="leer-hinweis" hidden aria-live="polite">Keine Ideen für diesen Filter gefunden.</p>
     </section>
 
     <!-- 4) Formular: neue Idee hinzufügen -->

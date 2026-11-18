@@ -17,6 +17,7 @@ const STATUS_WERTE = ["Idee", "In Bearbeitung", "Fertig"];
 // Aktuelle Filter-Auswahl
 let filterBereich = "Alle";
 let filterStatus = "Alle";
+let suchbegriff = "";
 
 // Die Ideen, mit denen die App gerade arbeitet
 let ideen = ladeIdeen();
@@ -141,10 +142,14 @@ function zeigeListe() {
   const liste = document.getElementById("ideen-liste");
   liste.innerHTML = "";
 
-  // Nur Ideen behalten, die zu beiden Filtern passen
+  // Suchbegriff in Kleinbuchstaben, damit Groß-/Kleinschreibung egal ist
+  const begriff = suchbegriff.trim().toLowerCase();
+
+  // Nur Ideen behalten, die zu allen Filtern UND zur Suche passen
   const sichtbar = ideen.filter((idee) =>
     (filterBereich === "Alle" || idee.bereich === filterBereich) &&
-    (filterStatus === "Alle" || idee.status === filterStatus)
+    (filterStatus === "Alle" || idee.status === filterStatus) &&
+    (begriff === "" || idee.titel.toLowerCase().includes(begriff))
   );
 
   // Neueste Ideen zuerst
@@ -155,7 +160,15 @@ function zeigeListe() {
   }
 
   document.getElementById("anzahl-sichtbar").textContent = "(" + sichtbar.length + ")";
-  document.getElementById("leer-hinweis").hidden = sichtbar.length > 0;
+  // Verständliche Meldung, wenn nichts gefunden wurde
+  const hinweis = document.getElementById("leer-hinweis");
+  hinweis.hidden = sichtbar.length > 0;
+  if (begriff !== "") {
+    hinweis.textContent = "Keine Idee mit „" + suchbegriff.trim() + "“ im Titel gefunden. " +
+      "Prüfe die Schreibweise oder setze die Filter auf „Alle“.";
+  } else {
+    hinweis.textContent = "Keine Ideen für diesen Filter gefunden.";
+  }
 }
 
 // Alles neu anzeigen
@@ -244,6 +257,12 @@ document.querySelectorAll("#filter-bereich .filter-knopf").forEach((knopf) => {
 // Status-Filter (Auswahlfeld)
 document.getElementById("filter-status").addEventListener("change", (ereignis) => {
   filterStatus = ereignis.target.value;
+  zeigeListe();
+});
+
+// Suchfeld: "input" feuert bei jedem getippten oder gelöschten Zeichen
+document.getElementById("suche").addEventListener("input", (ereignis) => {
+  suchbegriff = ereignis.target.value;
   zeigeListe();
 });
 
