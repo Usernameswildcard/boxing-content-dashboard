@@ -12,6 +12,7 @@ Eine einfache, mobilfreundliche Web-App, um Content-Ideen für meine Karriere al
 - **Neue Ideen** hinzufügen und Ideen löschen
 - **Speichern im Browser** (`localStorage`): keine Anmeldung, kein Server, keine Kosten
 - **Zurücksetzen** auf die Beispieldaten
+- **KI-Ergebnis importieren:** JSON mit `kategorie`, `hooks` (3 Texte), `caption` und `status` einfügen, prüfen lassen und Hooks/Caption mit einem Tipp kopieren. Läuft komplett im Browser, ohne externe KI oder API.
 
 ## Starten
 
@@ -33,6 +34,7 @@ Danach im Browser `http://localhost:8000` öffnen.
 | `css/style.css` | **Aussehen:** Farben, Abstände, Layout für Handy und Desktop |
 | `js/data.js` | **Beispieldaten:** die Start-Ideen |
 | `js/app.js` | **Verhalten:** Anzeigen, Filtern, Ändern, Speichern |
+| `js/ki-import.js` | **KI-Import:** JSON prüfen, Hooks und Caption anzeigen, Kopieren |
 
 `index.html` lädt zuerst `data.js` (die Daten) und danach `app.js` (die Logik, die mit den Daten arbeitet).
 

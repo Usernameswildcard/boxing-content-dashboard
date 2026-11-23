@@ -397,3 +397,117 @@ button:focus-visible {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ============================================================
+   KI-Ergebnis importieren
+   ============================================================ */
+#ki-eingabe {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 16px; /* mind. 16px, sonst zoomt das iPhone beim Tippen hinein */
+}
+
+.knopf-reihe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.knopf-reihe .knopf-leise {
+  flex: 1; /* Handy: die zwei kleinen Knöpfe teilen sich eine Zeile */
+}
+
+.ki-fehler {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--boxen);
+  border-left-width: 5px;
+  border-radius: 8px;
+  background: #fff5f5;
+  color: var(--text);
+}
+
+.ki-fehler ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.ki-ergebnis {
+  margin-top: 1rem;
+}
+
+.ki-kopf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ki-etikett {
+  background: var(--dunkel);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+}
+
+.ki-liste {
+  display: grid;
+  grid-template-columns: 1fr; /* Handy: 1 Spalte */
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ki-karte {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-top: 5px solid var(--modeln);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ki-caption {
+  border-top-color: var(--lifestyle);
+}
+
+.ki-karte-titel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-leise);
+}
+
+.ki-text {
+  margin: 0.4rem 0 0.75rem;
+  white-space: pre-line; /* Zeilenumbrüche aus der Caption behalten */
+  overflow-wrap: anywhere; /* lange Hashtags/Links brechen um */
+}
+
+.knopf-kopieren {
+  margin-top: auto; /* Knopf sitzt immer unten in der Karte */
+  align-self: flex-start;
+  background: var(--flaeche);
+  border-color: var(--rand);
+  color: var(--text);
+}
+
+.knopf-kopieren.kopiert {
+  background: var(--fertig);
+  border-color: var(--fertig);
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .knopf-reihe .knopf-leise {
+    flex: 0 0 auto; /* ab Tablet: Knöpfe nur so breit wie ihr Text */
+  }
+}
+
+@media (min-width: 900px) {
+  .ki-liste {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

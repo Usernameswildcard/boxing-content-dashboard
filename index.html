@@ -112,7 +112,32 @@
       </form>
     </section>
 
-    <!-- 5) Zurücksetzen -->
+    <!-- 5) KI-Ergebnis importieren (Logik in js/ki-import.js) -->
+    <section aria-labelledby="titel-ki">
+      <h2 id="titel-ki">KI-Ergebnis importieren</h2>
+
+      <div class="formular">
+        <label class="feld">
+          <span>JSON einfügen</span>
+          <textarea id="ki-eingabe" rows="7" spellcheck="false" autocapitalize="off" autocomplete="off"
+            placeholder='{ "kategorie": "Boxen", "hooks": ["…", "…", "…"], "caption": "…", "status": "Idee" }'></textarea>
+        </label>
+
+        <div class="knopf-reihe">
+          <button type="button" id="ki-importieren" class="knopf knopf-haupt">Importieren</button>
+          <button type="button" id="ki-beispiel" class="knopf knopf-leise">Beispiel einfügen</button>
+          <button type="button" id="ki-leeren" class="knopf knopf-leise">Leeren</button>
+        </div>
+
+        <!-- Fehlermeldung bei ungültigem JSON (role="alert": wird sofort vorgelesen) -->
+        <div id="ki-fehler" class="ki-fehler" role="alert" hidden></div>
+      </div>
+
+      <!-- Hier erscheint das Ergebnis nach dem Import -->
+      <div id="ki-ergebnis" class="ki-ergebnis" hidden></div>
+    </section>
+
+    <!-- 6) Zurücksetzen -->
     <section class="zuruecksetzen">
       <button type="button" id="knopf-zuruecksetzen" class="knopf knopf-leise">
         Beispieldaten zurücksetzen
@@ -128,5 +153,6 @@
   <!-- Reihenfolge ist wichtig: zuerst die Daten, dann die Logik -->
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/ki-import.js"></script>
 </body>
 </html>
